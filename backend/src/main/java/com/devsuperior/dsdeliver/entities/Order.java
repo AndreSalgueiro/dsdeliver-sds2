@@ -36,7 +36,7 @@ public class Order implements Serializable{
 	
 	private Set<Product> products = new HashSet<>();
 	
-	private Order() {
+	public Order() {
 		
 	}
 
