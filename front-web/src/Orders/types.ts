@@ -13,3 +13,12 @@ export type OrderLocationData = {
         address: string
 
 }
+
+export type ProductId = {
+    id: number;
+}
+
+export type OrderPayload = {
+    products: ProductId[];
+
+} & OrderLocationData; /*junta os dados de OrderLocationData*/
