@@ -13,3 +13,19 @@ https://andre-salgueiro-sds2.herokuapp.com
 
 * Apontamento para localhost  
 http://localhost:8080
+
+## Arquivos .properties
+
+Alterar o atributo para cada objetivo
+* Teste  
+Aponta para o banco de dados em memória  
+spring.profiles.active=test
+
+* Desenvolvimento  
+Aponta para o banco de dados do Postgre local  
+spring.profiles.active=dev
+
+* Produção  
+Aponta para o banco de dados do Postgre hospedado no Heroku  
+spring.profiles.active=prod
+
