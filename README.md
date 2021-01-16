@@ -11,12 +11,15 @@ https://raw.githubusercontent.com/devsuperior/sds2/master/assets/camadas.png
 
 ## ATENÇÃO: O PROJETO NÃO RODA LOCALMENTE NO PROFILE PROD! Se você quiser rodar o projeto localmente depois, mude para o profile test.
 
+```
 heroku login
 heroku git:remote -a <nome-do-app>
 git remote -v
 git subtree push --prefix backend heroku main
-    
+```  
+
 ## Dependências Maven
+```
 <dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-web</artifactId>
@@ -54,8 +57,10 @@ git subtree push --prefix backend heroku main
 	<artifactId>spring-boot-starter-test</artifactId>
 	<scope>test</scope>
 </dependency>	
+```
 
 ## Classe de configuração de segurança
+```
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -83,8 +88,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return source;
 	}
 }
+```
 
-Arquivos .properties de cada profile do projeto
+## Arquivos .properties de cada profile do projeto
 
 ### application.properties
 spring.profiles.active=test
@@ -113,9 +119,12 @@ spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 spring.jpa.hibernate.ddl-auto=none
 
 ### application-prod.properties
+
 spring.datasource.url=${DATABASE_URL}
 
 ## Script SQL de instanciação da base de dados
+
+```
 INSERT INTO tb_product (name, price, image_Uri, description) VALUES ('Pizza Bacon', 49.9, 'https://raw.githubusercontent.com/devsuperior/sds2/master/assets/pizza_bacon.jpg', 'Pizza de bacon com mussarela, orégano, molho especial e tempero da casa.');
 INSERT INTO tb_product (name, price, image_Uri, description) VALUES ('Pizza Moda da Casa', 59.9, 'https://raw.githubusercontent.com/devsuperior/sds2/master/assets/pizza_moda.jpg', 'Pizza à moda da casa, com molho especial e todos ingredientes básicos, e queijo à sua escolha.');
 INSERT INTO tb_product (name, price, image_Uri, description) VALUES ('Pizza Portuguesa', 45.0, 'https://raw.githubusercontent.com/devsuperior/sds2/master/assets/pizza_portuguesa.jpg', 'Pizza Portuguesa com molho especial, mussarela, presunto, ovos e especiarias.');
@@ -148,15 +157,15 @@ INSERT INTO tb_order_product (order_id, product_id) VALUES (6 , 5);
 INSERT INTO tb_order_product (order_id, product_id) VALUES (6 , 1);
 INSERT INTO tb_order_product (order_id, product_id) VALUES (7 , 7);
 INSERT INTO tb_order_product (order_id, product_id) VALUES (7 , 5);
-
+```
 ## Postman
 
 Clicar no símbolo do "olho", canto superior direito, e trocar a variável CURRENT VALUE para o endereço abaixo: 
-
+```
 <div align="center">
     <img src="/Postman.JPG" width="700px"</img> 
 </div>
-
+```
 * Apontamento para endereço de produção (Heroku)  
 https://andre-salgueiro-sds2.herokuapp.com
 
@@ -181,8 +190,9 @@ spring.profiles.active=prod
 # FRONT-END
 
 ## Criando projeto com create-react-app:
+```
 npx create-react-app front-web --template typescript --use-npm
-
+```
 ## URL de busca de endereços do MapBox:
 https://api.mapbox.com/geocoding/v5/mapbox.places/${local}.json?access_token=${mapboxToken}
 
@@ -201,3 +211,40 @@ https://www.youtube.com/watch?v=d6PSYTbctcY
 https://www.youtube.com/watch?v=ZYPQmfcZGxg&feature=youtu.be
 ### Parte 2:
 https://www.youtube.com/watch?v=IL9UfTcCXL4&feature=youtu.be
+
+# MOBILE
+
+## Passo a passo de configuração do projeto:
+
+### Instando o Expo globalmente:
+```
+npm install --global expo-cli
+```
+
+### Criando projeto com Expo:
+```
+expo init front-mobile -t expo-template-blank-typescript --npm
+```
+
+### Após a instalação, remover a pasta .git de DENTRO DA PASTA front-mobile (MUITA ATENÇÃO NESSE PASSO!)
+```
+rm -rf .git
+```
+
+### Instalando dependências:
+```
+expo install @react-navigation/stack @react-native-community/masked-view react-native-screens react-native-gesture-handler @react-navigation/native expo-app-loading @expo-google-fonts/open-sans expo-font
+```
+
+### Acesso URL do Google Maps:
+https://www.google.com/maps/dir/?api=1&travelmode=driving&dir_action=navigate&destination=${order.latitude},${order.longitude}
+
+## Links úteis:
+* https://docs.expo.io/
+* https://docs.expo.io/guides/using-custom-fonts/
+* https://reactnative.dev/docs/images
+* https://docs.expo.io/get-started/installation/#2-expo-client-app-for-ios-and
+
+
+
+
